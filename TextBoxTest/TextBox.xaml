@@ -3,63 +3,11 @@
                     xmlns:local="clr-namespace:TextBoxTest">
 
 
-    <local:BoolToVisibleConverter x:Key="BoolToVisibleConverter"/>
 
-    <Style TargetType="{x:Type TextBox}" x:Key="ClearText">
-        <Setter Property="BorderBrush"
-                Value="LightGray"/>
-        <Setter Property="BorderThickness"
-                Value="1"/>
-        <Setter Property="Foreground"
-                Value="#3E3E3E" />
-        <Setter Property="Background"
-                Value="White"/>
+    <BooleanToVisibilityConverter  x:Key="BoolToVisibleConverter"/>
 
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type TextBox}">
 
-                  <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
 
-                        <Border x:Name="border" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="{Binding Path=(local:TextBoxHelper.CornerRadius),RelativeSource={RelativeSource AncestorType=TextBox}, Mode=OneWay}"
-                                SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" 
-                                          Focusable="false" 
-                                          HorizontalScrollBarVisibility="Hidden"
-                                          VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-
-                        <Button x:Name="PART_BtnClear"
-                                    FontSize="{TemplateBinding FontSize}"
-                                    Cursor="Arrow"
-                                    Grid.Column="1"
-                                    VerticalAlignment="Center"
-                                    Margin="0,0,5,0"
-                                    Content="×"
-                                    Visibility="{Binding Path=(local:TextBoxHelper.IsClearButtonVisible),RelativeSource={RelativeSource AncestorType=TextBox}, Converter={StaticResource BoolToVisibleConverter}}" />
-
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger  Property="IsEnabled"
-                                  Value="False">
-                            <Setter Property="Opacity"
-                                    Value="0.4"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-
-      
-    </Style>
 
 
 
@@ -74,7 +22,7 @@
         <Setter Property="Background"
                 Value="White"/>
         <Setter Property="FontSize" Value="15"/>
-       
+
 
         <Setter Property="Template">
             <Setter.Value>
@@ -102,28 +50,90 @@
                                 </Grid.RowDefinitions>
                                 <Grid>
                                     <RepeatButton Width="25" 
-                                                  VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Stretch"
+                                                  VerticalContentAlignment="Center"
+                                                  HorizontalContentAlignment="Center"
                                                   Name="PART_BtnAdd"
                                                   Visibility="{Binding Path=(local:TextBoxHelper.IsAddButtonVisible),RelativeSource={RelativeSource AncestorType=TextBox}, Converter={StaticResource BoolToVisibleConverter}}">
                                         <RepeatButton.Content>
-                                            <Image Source="上箭头1.png"></Image>
+                                            <Path Stroke="Black" StrokeThickness="1">
+                                                <Path.Data>
+                                                    <PathGeometry>
+                                                        <PathGeometry.Figures>
+                                                            <PathFigure StartPoint="0,0">
+                                                                <PathFigure.Segments>
+                                                                    <LineSegment Point="2,-2"/>
+                                                                    <LineSegment Point="4,0"/>
+                                                                </PathFigure.Segments>
+                                                            </PathFigure>
+                                                        </PathGeometry.Figures>
+                                                    </PathGeometry>
+                                                </Path.Data>
+                                            </Path>
                                         </RepeatButton.Content>
                                     </RepeatButton>
                                 </Grid>
                                 <Grid  Grid.Row="1">
                                     <RepeatButton Width="25"
-                                                  VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
+                                               
+                                                  VerticalAlignment="Stretch"
+                                                   VerticalContentAlignment="Center"
+                                                   HorizontalContentAlignment="Center"
                                                   Name="PART_BtnRemove"
                                                    Visibility="{Binding Path=(local:TextBoxHelper.IsRemoveButtonVisible),RelativeSource={RelativeSource AncestorType=TextBox}, Converter={StaticResource BoolToVisibleConverter}}" >
                                         <RepeatButton.Content>
-                                            <Image Source="下箭头1.png"></Image>
+                                            <Path Stroke="Black" StrokeThickness="1">
+                                                <Path.Data>
+                                                    <PathGeometry>
+                                                        <PathGeometry.Figures>
+                                                            <PathFigure StartPoint="0,0">
+                                                                <PathFigure.Segments>
+                                                                    <LineSegment Point="2,2"/>
+                                                                    <LineSegment Point="4,0"/>
+                                                                </PathFigure.Segments>
+                                                            </PathFigure>
+                                                        </PathGeometry.Figures>
+                                                    </PathGeometry>
+                                                </Path.Data>
+                                            </Path>
                                         </RepeatButton.Content>
                                     </RepeatButton>
                                 </Grid>
                             </Grid>
 
+
+                            <Button x:Name="PART_BtnClear"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Cursor="Arrow"
+                                    Grid.Column="1"
+                                     Width="25"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalAlignment="Stretch"
+                                    Margin="0,0,0,0"
+                                    Visibility="{Binding Path=(local:TextBoxHelper.IsClearButtonVisible),RelativeSource={RelativeSource AncestorType=TextBox}, Converter={StaticResource BoolToVisibleConverter}}" >
+                                <Button.Content>
+                                    <Path Stroke="Black" StrokeThickness="1">
+                                        <Path.Data>
+                                            <PathGeometry>
+                                                <PathGeometry.Figures>
+                                                    <PathFigure StartPoint="0,0">
+                                                        <PathFigure.Segments>
+
+                                                            <LineSegment Point="4,4"/>
+                                                        </PathFigure.Segments>
+                                                    </PathFigure>
+                                                    <PathFigure StartPoint="0,4">
+                                                        <PathFigure.Segments>
+                                                            <LineSegment Point="4,0"/>
+
+                                                        </PathFigure.Segments>
+                                                    </PathFigure>
+                                                </PathGeometry.Figures>
+                                            </PathGeometry>
+                                        </Path.Data>
+                                    </Path>
+                                </Button.Content>
+                            </Button>
                         </Grid>
                     </Border>
 

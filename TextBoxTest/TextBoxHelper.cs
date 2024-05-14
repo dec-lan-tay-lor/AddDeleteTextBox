@@ -65,7 +65,7 @@ namespace TextBoxTest
             if (textbox == null)
                 return;
 
-            textbox.Text = "";
+            textbox.Text = null;
         }
 
         #endregion

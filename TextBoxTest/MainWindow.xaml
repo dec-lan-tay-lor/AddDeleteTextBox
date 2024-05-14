@@ -6,16 +6,53 @@
         xmlns:local="clr-namespace:TextBoxTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <!--<TextBox Width="200" Height="50"
+    <UniformGrid>
+        <TextBox Width="100" Height="25"
                  Text="9900"  
-                 local:TextBoxHelper.CornerRadius="15"
-                 BorderBrush="Black"
-                 BorderThickness="3 3 0 3"
-                 local:TextBoxHelper.IsClearButtonVisible="true"
-                 VerticalAlignment="Center"></TextBox>-->
+                 local:TextBoxHelper.IsClearButtonVisible="True"
+                 VerticalAlignment="Center"></TextBox>
         <TextBox Width="100" Height="25" 
                  local:TextBoxHelper.IsAddButtonVisible="True"
                  local:TextBoxHelper.IsRemoveButtonVisible="True"></TextBox>
-    </Grid>
+
+        <Grid>
+
+
+            <!--<Path Stroke="Black" StrokeThickness="1">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigure StartPoint="0,0">
+                                <PathFigure.Segments>
+                               
+                                    <LineSegment Point="2,2"/>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                            <PathFigure StartPoint="0,2">
+                                <PathFigure.Segments>
+                                    <LineSegment Point="2,0"/>
+                         
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>-->
+
+            <!--<Path Stroke="Black" StrokeThickness="1">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigure StartPoint="0,0">
+                                <PathFigure.Segments>
+                                    <LineSegment Point="2,-2"/>
+                                    <LineSegment Point="4,0"/>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>-->
+        </Grid>
+    </UniformGrid>
 </Window>
